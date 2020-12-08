@@ -1,9 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-// bot rpg
-// require("./interval"); 
-require("./interval-bot");
+const isRpg = process.env.IS_RPG || false;
+
+if (isRpg) {
+  require("./interval");
+} else {
+  require("./interval-bot");
+}
 
 const app = express();
 const port = process.env.PORT || 3000;
