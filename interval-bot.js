@@ -45,15 +45,13 @@ function startCommands() {
           return runCommand(command.type, false);
         }
       };
-
-      timeoutValues[index] = setTimeout(() => {
-        callback().then(() => {
-          commandIntervals[index] = setInterval(
-            callback,
-            command.interval * 1000
-          );
-        });
-      }, cooldownTime);
+      
+      callback().then(() => {
+        commandIntervals[index] = setInterval(
+          callback,
+          command.interval * 1000
+        );
+      });
     }
   }
 }
