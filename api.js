@@ -4,7 +4,7 @@ const { log, ...utils } = require("./utils");
 
 const http = rateLimit(axios.create(), {
   maxRequests: 1,
-  perMilliseconds: 2000
+  perMilliseconds: 500
 });
 
 let cancelSource = null;
