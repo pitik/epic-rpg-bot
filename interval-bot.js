@@ -47,7 +47,7 @@ function startCommands() {
       };
       
       callback().then(() => {
-        commandIntervals[index] = setInterval(
+        setInterval(
           callback,
           command.interval * 1000
         );
