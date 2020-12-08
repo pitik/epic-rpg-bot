@@ -58,14 +58,14 @@ function startCommands() {
 
 function runCommand(command) {
   // typing effect
-  api.typing().catch(err => log(err));
+//   api.typing().catch(err => log(err.message));
 
   return api
     .sendMessage(command, false)
     .then(res => {
       log(`Running ${command}`);
     })
-    .catch(err => log(err));
+    .catch(err => log(err.message));
 }
 
 if (!stopBot) {
