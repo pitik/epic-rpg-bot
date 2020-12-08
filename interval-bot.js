@@ -16,8 +16,8 @@ try {
 function executeCommand(text) {
   if (text && text.command) {
     return Promise.all([
-      runCommand(text.command, false),
-      runCommand(text.reply, false)
+      runCommand(text.command),
+      runCommand(text.reply)
     ]);
   }
   return runCommand(text);
@@ -40,9 +40,9 @@ function startCommands() {
             return executeCommand(text);
           }
         } else if (typeof command.text === "string") {
-          return runCommand(command.text, false);
+          return runCommand(command.text);
         } else {
-          return runCommand(command.type, false);
+          return runCommand(command.type);
         }
       };
       
@@ -56,12 +56,12 @@ function startCommands() {
   }
 }
 
-function runCommand(command, isRpg = true) {
+function runCommand(command) {
   // typing effect
   api.typing().catch(err => log(err));
 
   return api
-    .sendMessage(command, isRpg)
+    .sendMessage(command, false)
     .then(res => {
       log(`Running ${command}`);
     })
